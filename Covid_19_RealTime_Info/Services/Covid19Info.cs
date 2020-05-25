@@ -1,4 +1,5 @@
 ﻿using Covid_19_RealTime_Info.Interfaces;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -14,13 +15,12 @@ namespace Covid_19_RealTime_Info.Services
             {
                 HttpResponseMessage response = await httpClient.GetAsync("https://api.covid19api.com/world/total");
                 response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
-                return responseBody;
+                return await response.Content.ReadAsStringAsync();
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
 
-                throw new System.Exception(e.Message);
+                throw new Exception(e.Message);
             }
         }
     }

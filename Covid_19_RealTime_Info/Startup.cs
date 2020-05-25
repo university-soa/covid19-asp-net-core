@@ -1,22 +1,17 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Covid_19_RealTime_Info.Automation;
 using Covid_19_RealTime_Info.Interfaces;
 using Covid_19_RealTime_Info.Persistence;
 using Covid_19_RealTime_Info.Services;
 using Covid_19_RealTime_Info.SignalR.Hubs;
 using Hangfire;
+using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Covid_19_RealTime_Info
 {
@@ -33,6 +28,7 @@ namespace Covid_19_RealTime_Info
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ICovid19Info, Covid19Info>();
+            services.AddScoped<ICronJob, CronJob>();
 
             services.AddControllers();
             services.AddSignalR();
@@ -41,15 +37,28 @@ namespace Covid_19_RealTime_Info
                 options.AddPolicy("VueCorsPolicy", builder =>
                 {
                     builder
-                      .AllowAnyHeader()
+                      .WithOrigins("http://localhost:8080")
                       .AllowAnyMethod()
-                      .AllowCredentials()
-                      .WithOrigins("http://localhost:8080");
+                      .AllowAnyHeader()
+                      .AllowCredentials();
                 });
             });
 
-            services.AddHangfire(config =>
-            config.UseSqlServerStorage(Configuration.GetConnectionString("Default")));
+            services.AddHangfire(config => config
+            .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+            .UseSimpleAssemblyNameTypeSerializer()
+            .UseRecommendedSerializerSettings()
+            .UseSqlServerStorage(Configuration.GetConnectionString("Default"), new SqlServerStorageOptions
+            {
+                CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                QueuePollInterval = TimeSpan.Zero,
+                UseRecommendedIsolationLevel = true,
+                UsePageLocksOnDequeue = true,
+                DisableGlobalLocks = true
+            }));
+            // Add the processing server as IHostedService
+            services.AddHangfireServer();
             services.AddDbContext<Covid19RealTimeInfoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
         }
 
@@ -80,17 +89,12 @@ namespace Covid_19_RealTime_Info
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<Covid19InfoHub>("/covid19Info"); // Use Covid19InfoHub class
+                endpoints.MapHub<Covid19InfoHub>("/covid19InfoHub"); // Use Covid19InfoHub class
             });
 
-            var optionsBuilder = new DbContextOptionsBuilder<Covid19RealTimeInfoDbContext>();
-            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("Default"));
-            var context = new Covid19RealTimeInfoDbContext(optionsBuilder.Options);
-            var job = new CronJob(env, context);
-
             //local time
-            RecurringJob.AddOrUpdate(
-                () => job.GetCovid19Info(),
+            RecurringJob.AddOrUpdate<ICronJob>(
+                cj => cj.GetCovid19Info(),
                 Cron.Minutely(),
                 TimeZoneInfo.Local);
         }

@@ -1,39 +1,33 @@
 ﻿using Covid_19_RealTime_Info.Interfaces;
-using Covid_19_RealTime_Info.Persistence;
-using Covid_19_RealTime_Info.Services;
 using Covid_19_RealTime_Info.SignalR.Hubs;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SignalR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Covid_19_RealTime_Info.Automation
 {
-    public class CronJob
+    public class CronJob : ICronJob
     {
         private readonly ICovid19Info covid19Info;
-        private readonly Covid19InfoHub hub;
-        private readonly Covid19RealTimeInfoDbContext context;
-        public CronJob(IWebHostEnvironment host, Covid19RealTimeInfoDbContext context)
+        private readonly IHubContext<Covid19InfoHub, ICovid19InfoHub> hub;
+
+        public CronJob(ICovid19Info covid19Info, IHubContext<Covid19InfoHub, ICovid19InfoHub> hub)
         {
-            this.covid19Info = new Covid19Info();
-            this.hub = new Covid19InfoHub();
-            this.context = context;
+            this.covid19Info = covid19Info;
+            this.hub = hub;
         }
 
         public async Task GetCovid19Info()
         {
             try
             {
-                var responseBody = await covid19Info.GetCovid19Info();
-                await hub.UpdateCovid19Info(responseBody);
+                var content = await covid19Info.GetCovid19Info();
+                await hub.Clients.All.UpdateCovid19Info(content);
             }
             catch (Exception e)
             {
 
-                throw;
+                throw new Exception(e.Message);
             }
         }
     }

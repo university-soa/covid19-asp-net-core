@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Covid_19_RealTime_Info.Interfaces
 {
-    public interface ICovid19Info
+    public interface ICovid19InfoHub
     {
-        Task<string> GetCovid19Info();
+        Task UpdateCovid19Info(string content);
     }
 }
