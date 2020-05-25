@@ -134,3 +134,4 @@ C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_1
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\obj\Debug\netcoreapp3.1\Covid_19_RealTime_Info.pdb
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\bin\Debug\netcoreapp3.1\Hangfire.MemoryStorage.dll
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\obj\Debug\netcoreapp3.1\Covid_19_RealTime_Info.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\obj\Debug\netcoreapp3.1\Covid_19_RealTime_Info.csprojAssemblyReference.cache
