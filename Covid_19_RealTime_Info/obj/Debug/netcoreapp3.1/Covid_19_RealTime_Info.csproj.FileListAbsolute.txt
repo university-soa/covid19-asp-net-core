@@ -124,7 +124,6 @@ C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_1
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\obj\Debug\netcoreapp3.1\Covid_19_RealTime_Info.csprojAssemblyReference.cache
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\obj\Debug\netcoreapp3.1\staticwebassets\Covid_19_RealTime_Info.StaticWebAssets.Manifest.cache
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\obj\Debug\netcoreapp3.1\staticwebassets\Covid_19_RealTime_Info.StaticWebAssets.xml
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\obj\Debug\netcoreapp3.1\Covid_19_RealTime_Info.AssemblyInfoInputs.cache
@@ -133,4 +132,5 @@ C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_1
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\obj\Debug\netcoreapp3.1\Covid_19_RealTime_Info.csproj.CopyComplete
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\obj\Debug\netcoreapp3.1\Covid_19_RealTime_Info.dll
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\obj\Debug\netcoreapp3.1\Covid_19_RealTime_Info.pdb
+C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\bin\Debug\netcoreapp3.1\Hangfire.MemoryStorage.dll
 C:\Users\m.kovachev.ITR\source\repos\Projects\Su_Sofia_Covid_19_RealTime\Covid_19_RealTime_Info\Covid_19_RealTime_Info\obj\Debug\netcoreapp3.1\Covid_19_RealTime_Info.MvcApplicationPartsAssemblyInfo.cache

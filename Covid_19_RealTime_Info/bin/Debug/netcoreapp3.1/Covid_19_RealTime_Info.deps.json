@@ -25,6 +25,7 @@
       "Covid_19_RealTime_Info/1.0.0": {
         "dependencies": {
           "Hangfire.AspNetCore": "1.7.11",
+          "Hangfire.MemoryStorage": "1.7.0",
           "Hangfire.SqlServer": "1.7.11",
           "Microsoft.AspNetCore.SignalR": "1.1.0",
           "Microsoft.EntityFrameworkCore": "3.1.4",
@@ -359,6 +360,20 @@
         },
         "compile": {
           "lib/netstandard2.0/Hangfire.Core.dll": {}
+        }
+      },
+      "Hangfire.MemoryStorage/1.7.0": {
+        "dependencies": {
+          "Hangfire.Core": "1.7.11"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Hangfire.MemoryStorage.dll": {
+            "assemblyVersion": "1.7.0.0",
+            "fileVersion": "1.7.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.3/Hangfire.MemoryStorage.dll": {}
         }
       },
       "Hangfire.SqlServer/1.7.11": {
@@ -3141,6 +3156,13 @@
       "sha512": "sha512-/v+INBYRJJzMt5CPi+qFRsikYjbwUweBwLKGPc9PnDjD1o8MhQ5Ggx2/EOhavkQRwFgBRk5y3jCiD1HKR/WBPw==",
       "path": "hangfire.core/1.7.11",
       "hashPath": "hangfire.core.1.7.11.nupkg.sha512"
+    },
+    "Hangfire.MemoryStorage/1.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-g4hBdD8CaePScNWDOtRlR0GCxRyCK3KaItPcmABurlUZ8hs0YrpGUAYWgSWUSw6RXuPf1ZUK0l4REpV+sKYm/w==",
+      "path": "hangfire.memorystorage/1.7.0",
+      "hashPath": "hangfire.memorystorage.1.7.0.nupkg.sha512"
     },
     "Hangfire.SqlServer/1.7.11": {
       "type": "package",

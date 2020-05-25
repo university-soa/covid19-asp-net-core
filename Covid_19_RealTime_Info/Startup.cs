@@ -1,14 +1,12 @@
 using System;
 using Covid_19_RealTime_Info.Automation;
 using Covid_19_RealTime_Info.Interfaces;
-using Covid_19_RealTime_Info.Persistence;
 using Covid_19_RealTime_Info.Services;
 using Covid_19_RealTime_Info.SignalR.Hubs;
 using Hangfire;
-using Hangfire.SqlServer;
+using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -48,18 +46,10 @@ namespace Covid_19_RealTime_Info
             .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
             .UseSimpleAssemblyNameTypeSerializer()
             .UseRecommendedSerializerSettings()
-            .UseSqlServerStorage(Configuration.GetConnectionString("Default"), new SqlServerStorageOptions
-            {
-                CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-                SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-                QueuePollInterval = TimeSpan.Zero,
-                UseRecommendedIsolationLevel = true,
-                UsePageLocksOnDequeue = true,
-                DisableGlobalLocks = true
-            }));
+            .UseMemoryStorage());
+
             // Add the processing server as IHostedService
             services.AddHangfireServer();
-            services.AddDbContext<Covid19RealTimeInfoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
